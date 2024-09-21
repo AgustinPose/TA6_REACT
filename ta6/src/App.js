@@ -23,6 +23,12 @@ function App() {
     setDatos(nuevaLista);
   };
 
+  const editarTarea = (index) => {
+    const nuevaLista = [...datos];
+    nuevaLista[index] = prompt('Editar tarea:', nuevaLista[index]);
+    setDatos(nuevaLista);
+  };
+
   useEffect(() => {
     console.log("Datos actualizados:", datos);
   }, [datos]);
@@ -39,6 +45,7 @@ function App() {
         {datos.map((tarea, index) => (
           <li key={index}>{tarea}
             <button onClick={() => eliminarTarea(index)}>Eliminar</button>
+            <button onClick={() => editarTarea(index)}>Editar</button>
           </li>
 
         ))}
