@@ -17,6 +17,12 @@ function App() {
     }
   };
 
+  const eliminarTarea = (index) => {
+    const nuevaLista = [...datos];
+    nuevaLista.splice(index, 1);
+    setDatos(nuevaLista);
+  };
+
   useEffect(() => {
     console.log("Datos actualizados:", datos);
   }, [datos]);
@@ -31,8 +37,13 @@ function App() {
 
       <ul>
         {datos.map((tarea, index) => (
-          <li key={index}>{tarea}</li>
+          <li key={index}>{tarea}
+            <button onClick={() => eliminarTarea(index)}>Eliminar</button>
+          </li>
+
         ))}
+
+
       </ul>
 
     </div>
